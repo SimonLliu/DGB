@@ -118,7 +118,7 @@ vectorizer = TfidfVectorizer(ngram_range=(1,2),min_df=2, max_df=0.9,
 vectorizer = TfidfVectorizer(ngram_range=(1,4),min_df=2, 
              max_df=0.9,use_idf=1,smooth_idf=1, sublinear_tf=1)
 
-clf = svm.LinearSVC(C=4,dual=False)
+**clf = svm.LinearSVC(C=4,dual=False)**
 
 ## 提交分数：**0.77929 - 0.779634之间**
 
@@ -134,9 +134,9 @@ clf = svm.LinearSVC(C=4,dual=False)
 vectorizer = TfidfVectorizer(ngram_range=(1,4),min_df=2, 
              max_df=0.9,use_idf=1,smooth_idf=1, sublinear_tf=1)
 
-clf = svm.LinearSVC(C=6,dual=False)
+**clf = svm.LinearSVC(C=6,dual=False)**
 
-## 提交分数：**0.77929 - 0.779634之间**
+## 提交分数： **0.77929 - 0.779634之间**
 
 ## 耗时   28007
 ### 读取  83
@@ -151,7 +151,7 @@ clf = svm.LinearSVC(C=6,dual=False)
 vectorizer = TfidfVectorizer(ngram_range=(1,4),min_df=2, 
              max_df=0.9,use_idf=1,smooth_idf=1, sublinear_tf=1)
 
-lg = LogisticRegression(C=40,dual=True)
+**lg = LogisticRegression(C=40,dual=True)**
 
 ## 提交分数：**0.77- **排第六
 
