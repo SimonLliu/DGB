@@ -4,7 +4,7 @@
 print ("----------程序开始运行！！！------------")
 import pickle
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+#from sklearn.linear_model import LogisticRegression
 #from sklearn.linear_model import SGDClassifier
 #from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -62,15 +62,13 @@ print ("特征工程结束:耗时%s"%vert_druing_time)
 print('3  train model')
 fit_start_time = time.time()
 #lg = LogisticRegression(C=120,dual=True)
-lg = LogisticRegression(C=40,dual=True)
-lg.fit(x_train,y_train)
 #lg.fit(xTrain,yTrain)
-# clf = svm.LinearSVC(C=6,dual=False)
+clf = svm.LinearSVC(C=6,dual=False)
 #clf =  MLPClassifier(solver='adam', alpha=0.01,hidden_layer_sizes=(5, 5), random_state=1, activation='relu', learning_rate_init=0.01,max_iter=1000)
-# clf.fit(x_train,y_train)
+clf.fit(x_train,y_train)
 #Accumulate auc on test set
-prediction = lg.predict(xTest)
-prediction2 = lg.predict(x_train)
+prediction = clf.predict(xTest)
+prediction2 = clf.predict(x_train)
 correct = accuracy_score(yTest, prediction)
 correct2 = accuracy_score(y_train, prediction2)
 print(correct)
@@ -82,26 +80,22 @@ print ("数据训练结束:耗时%s"%fit_druing_time)
 
 print('4  save model')
 #joblib.dump(sgd, "sgd_model_Tfid_1.m")
-y_test= lg.predict(x_test)
+y_test= clf.predict(x_test)
 df_test['class']=y_test.tolist()
 df_test['class']=df_test['class']+1
 df_result = df_test.loc[:,['id','class']]
 
 print('5  save predictable data')
-df_result.to_csv(path + 'result(c40).csv',index=False)
+df_result.to_csv(path + 'result_svm(c6).csv',index=False)
 
 
 # 保存特征
-with open('../feature/y_train.pickle', 'wb') as f:
+with open('./y_train.pickle', 'wb') as f:
     pickle.dump(y_train, f)
-with open('../feature/x_train.pickle', 'wb') as f:
+with open('./x_train.pickle', 'wb') as f:
     pickle.dump(x_train, f)
-with open('../feature/x_test.pickle', 'wb') as f:
+with open('./x_test.pickle', 'wb') as f:
     pickle.dump(x_test, f)
-
-# 保存模型
-joblib.dump(lg, "lg(C40).pkl")
-
 
 # 读取特征
 # print('读取 feature:')
@@ -112,10 +106,10 @@ joblib.dump(lg, "lg(C40).pkl")
 
 
 # 保存模型
-# joblib.dump(lg, "lg(C).pkl")
+joblib.dump(clf, "svm(C6).pkl")
 # 读取模型
-# print('读取* model')
-# my_model_loaded = joblib.load("LinearSVC(C4).pkl")
+print('读取* model')
+my_model_loaded = joblib.load("LinearSVC(C4).pkl")
 
 
 '''程序运行结束'''

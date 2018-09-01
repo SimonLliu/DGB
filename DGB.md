@@ -1,5 +1,4 @@
 
-11
 # 方案一：svm (article+word_seq)
 ## 参数
 vectorizer = TfidfVectorizer(ngram_range=(1,4),min_df=2, 
