@@ -93,7 +93,7 @@ vectorizer = TfidfVectorizer(ngram_range=(1,2),min_df=3, max_df=0.9,
 ### 向量化  7300
 ### 训练     2434
 
-##预测分数  0.98
+## 预测分数  0.98
 
 
 # 方案六：svm (word_seq)
@@ -111,7 +111,7 @@ vectorizer = TfidfVectorizer(ngram_range=(1,2),min_df=2, max_df=0.9,
 ### 向量化  1322
 ### 训练     1273
 
-##预测分数  0.994
+## 预测分数  0.994
 
 # 方案七：svm (article+word_seq)
 ## 参数
